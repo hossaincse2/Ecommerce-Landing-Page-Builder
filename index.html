@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eCommerce Page Builder</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- GrapesJS CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/grapesjs/0.20.4/css/grapes.min.css">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./pagebuilder.css">
+</head>
+<body>
+    <div class="page-builder">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header">
+                <h3><i class="fas fa-paint-brush"></i> Page Builder</h3>
+                <p>Drag & drop eCommerce components</p>
+            </div>
+            
+            <div class="sidebar-tabs">
+                <button class="sidebar-tab active" onclick="switchTab('blocks')" data-tab="blocks">
+                    <i class="fas fa-th-large"></i><br>Blocks
+                </button>
+                <button class="sidebar-tab" onclick="switchTab('templates')" data-tab="templates">
+                    <i class="fas fa-file-alt"></i><br>Templates
+                </button>
+                <button class="sidebar-tab" onclick="switchTab('assets')" data-tab="assets">
+                    <i class="fas fa-images"></i><br>Assets
+                </button>
+            </div>
+            
+            <div class="sidebar-content">
+                <!-- Blocks Tab -->
+                <div id="blocks-tab" class="tab-content active">
+                    <div class="template-section">
+                        <h4><i class="fas fa-star"></i> Hero Sections</h4>
+                        <div class="template-grid">
+                            <div class="template-block" data-block="hero-ecommerce">
+                                <i class="fas fa-crown"></i>
+                                <span>Product Hero</span>
+                            </div>
+                            <div class="template-block" data-block="hero-minimal">
+                                <i class="fas fa-gem"></i>
+                                <span>Minimal Hero</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="template-section">
+                        <h4><i class="fas fa-play-circle"></i> Media</h4>
+                        <div class="template-grid">
+                            <div class="template-block" data-block="video-section">
+                                <i class="fas fa-video"></i>
+                                <span>Video Player</span>
+                            </div>
+                            <div class="template-block" data-block="image-gallery">
+                                <i class="fas fa-images"></i>
+                                <span>Image Gallery</span>
+                            </div>
+                            <div class="template-block" data-block="image-slider">
+                                <i class="fas fa-sliders-h"></i>
+                                <span>Image Slider</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="template-section">
+                        <h4><i class="fas fa-shopping-cart"></i> Product</h4>
+                        <div class="template-grid">
+                            <div class="template-block" data-block="product-description">
+                                <i class="fas fa-align-left"></i>
+                                <span>Description</span>
+                            </div>
+                            <div class="template-block" data-block="product-specs">
+                                <i class="fas fa-list-alt"></i>
+                                <span>Specifications</span>
+                            </div>
+                            <div class="template-block" data-block="product-variants">
+                                <i class="fas fa-cogs"></i>
+                                <span>Variants</span>
+                            </div>
+                            <div class="template-block" data-block="customer-reviews">
+                                <i class="fas fa-star"></i>
+                                <span>Reviews</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="template-section">
+                        <h4><i class="fas fa-credit-card"></i> Checkout</h4>
+                        <div class="template-grid">
+                            <div class="template-block" data-block="checkout-form">
+                                <i class="fas fa-wpforms"></i>
+                                <span>Simple Checkout</span>
+                            </div>
+                            <div class="template-block" data-block="advanced-checkout">
+                                <i class="fas fa-shopping-bag"></i>
+                                <span>Multi-Product</span>
+                            </div>
+                            <div class="template-block" data-block="social-order">
+                                <i class="fas fa-share-alt"></i>
+                                <span>Social Order</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="template-section">
+                        <h4><i class="fas fa-th"></i> Basic</h4>
+                        <div class="template-grid">
+                            <div class="template-block" data-block="text-block">
+                                <i class="fas fa-font"></i>
+                                <span>Text Block</span>
+                            </div>
+                            <div class="template-block" data-block="button-block">
+                                <i class="fas fa-mouse-pointer"></i>
+                                <span>Button</span>
+                            </div>
+                            <div class="template-block" data-block="container-block">
+                                <i class="fas fa-square"></i>
+                                <span>Container</span>
+                            </div>
+                            <div class="template-block" data-block="divider-block">
+                                <i class="fas fa-minus"></i>
+                                <span>Divider</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Templates Tab -->
+                <div id="templates-tab" class="tab-content">
+                    <div class="template-section">
+                        <h4><i class="fas fa-save"></i> Ready Templates</h4>
+                        <div class="template-list" id="saved-templates">
+                            <div class="template-item" onclick="loadCompleteTemplate()">
+                                <div class="template-name">Complete eCommerce Page</div>
+                                <div class="template-description">Full product landing page with all sections</div>
+                            </div>
+                            <div class="template-item" onclick="loadMinimalTemplate()">
+                                <div class="template-name">Minimal Product Page</div>
+                                <div class="template-description">Clean and simple product showcase</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Assets Tab -->
+                <div id="assets-tab" class="tab-content">
+                    <div class="template-section">
+                        <h4><i class="fas fa-cloud-upload-alt"></i> Upload Images</h4>
+                        <input type="file" id="image-upload" accept="image/*" multiple class="form-control mb-3">
+                        <div id="asset-manager" class="asset-grid"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Area -->
+        <div class="main-area">
+            <!-- Toolbar -->
+            <div class="toolbar">
+                <div class="toolbar-left">
+                    <button class="btn-toolbar" onclick="clearCanvas()">
+                        <i class="fas fa-file"></i> New
+                    </button>
+                    <button class="btn-toolbar" onclick="showImportModal()">
+                        <i class="fas fa-upload"></i> Import
+                    </button>
+                    <button class="btn-toolbar" onclick="exportHTML()">
+                        <i class="fas fa-download"></i> Export
+                    </button>
+                    <button class="btn-toolbar" onclick="showSaveModal()">
+                        <i class="fas fa-save"></i> Save
+                    </button>
+                </div>
+                
+                <div class="toolbar-right">
+                    <div class="device-switcher">
+                        <button class="device-btn active" onclick="setDevice('desktop')" data-device="desktop">
+                            <i class="fas fa-desktop"></i>
+                        </button>
+                        <button class="device-btn" onclick="setDevice('tablet')" data-device="tablet">
+                            <i class="fas fa-tablet-alt"></i>
+                        </button>
+                        <button class="device-btn" onclick="setDevice('mobile')" data-device="mobile">
+                            <i class="fas fa-mobile-alt"></i>
+                        </button>
+                    </div>
+                    <button class="btn-toolbar primary" onclick="previewPage()">
+                        <i class="fas fa-eye"></i> Preview
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Canvas -->
+            <div class="canvas-area">
+                <div id="gjs"></div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modals -->
+    <div id="save-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Save Template</h3>
+                <button class="modal-close" onclick="closeModal('save-modal')">&times;</button>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Template Name</label>
+                <input type="text" class="form-input" id="template-name" placeholder="Enter template name">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Description</label>
+                <textarea class="form-input form-textarea" id="template-description" placeholder="Enter template description"></textarea>
+            </div>
+            <div style="text-align: right;">
+                <button class="btn-toolbar" onclick="closeModal('save-modal')">Cancel</button>
+                <button class="btn-toolbar primary" onclick="saveTemplate()">Save Template</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="import-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Import Template</h3>
+                <button class="modal-close" onclick="closeModal('import-modal')">&times;</button>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Import from JSON</label>
+                <input type="file" class="form-input" id="import-file" accept=".json">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Or paste JSON data</label>
+                <textarea class="form-input form-textarea" id="import-data" placeholder="Paste your template JSON here"></textarea>
+            </div>
+            <div style="text-align: right;">
+                <button class="btn-toolbar" onclick="closeModal('import-modal')">Cancel</button>
+                <button class="btn-toolbar primary" onclick="importTemplate()">Import</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/grapesjs/0.20.4/grapes.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/grapesjs/0.20.4/plugins/gjs-preset-webpage.min.js"></script>
+    
+    <!-- Custom JavaScript Files -->
+    <script src="./js/utils.js"></script>
+    <script src="./js/blocks.js"></script>
+    <script src="./js/components.js"></script>
+    <script src="./js/templates.js"></script>
+    <script src="./js/main.js"></script> 
+    
+</body>
+</html>
